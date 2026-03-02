@@ -1,9 +1,9 @@
-
+let User = require('../models/userModel')
 const bcrypt = require("bcrypt");
 
 let userSignup = async (req, res) => {
     const { username, email, password } = req.body
-    
+
     let existmail = await User.findOne({ email })
     if (existmail) {
 
@@ -27,6 +27,7 @@ let userSignup = async (req, res) => {
 let userLogin = async (req, res) => {
 
     const { password, email } = req.body
+
     let user = await User.findOne({ email: email })
 
     if (!user) {
@@ -38,7 +39,13 @@ let userLogin = async (req, res) => {
         res.json({ message: "wrong password " })
 
     } else {
-        res.json({ message: "login successfully" })
+        res.json({
+            message: "login successfully", data: {
+                username: user.username,
+                email: user.email,
+                _id: user._id
+            }
+        })
     }
 
 }
