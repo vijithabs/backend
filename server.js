@@ -17,7 +17,7 @@ app.use(cors())
 // mongodb connection
 mongoDB()
 
-// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads'));
 app.use('/', userRoutes)
 app.use('/book', bookRoutes)
 

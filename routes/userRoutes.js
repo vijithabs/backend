@@ -1,6 +1,7 @@
 
 const express = require("express");
 const router = express.Router();
+const authMiddleware=require("../middlewares/authMiddleware.js")
 
 const { userSignup, userLogin, userData, userUpdate, userDelete } = require('../controllers/userController.js')
 
