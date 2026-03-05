@@ -22,9 +22,9 @@ const { createBook, readBook, updateBook, deleteBook, readBookDetails } = requir
 const authMiddleware = require("../middlewares/authMiddleware.js");
 
 
-router.post('/',upload.single("image"), createBook);
+router.post('/',authMiddleware,upload.single("image"), createBook);
 router.get('/read', authMiddleware, readBook);
-router.get('/details/:id', readBookDetails);
+router.get('/details/:id', authMiddleware,readBookDetails);
 router.put('/update/:id', authMiddleware, updateBook);
 router.delete('/delete/:id', authMiddleware, deleteBook);
 
